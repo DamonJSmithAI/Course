@@ -1,0 +1,43 @@
+import yfinance as yf
+
+tsla_object = yf.Ticker("TSLA")
+tsla_history = tsla_object.history(period="1d")  # You can adjust the period as needed
+
+print(tsla_history.tail())
+
+
+import yfinance as yf
+
+tsla_object = yf.Ticker("TSLA")
+revenue = tsla_object.info.get('revenue', 'Not available')
+
+print(f'Tesla Revenue: {revenue}')
+
+
+import yfinance as yf
+
+tsla_object = yf.Ticker("TSLA")
+info_headers = tsla_object.info.keys()
+
+for header in info_headers:
+    print(header)
+
+
+import yfinance as yf
+import matplotlib.pyplot as plt
+
+# Download historical data for TSLA
+tsla_data = yf.download("TSLA", start="2022-01-01", end="2023-01-01")
+
+# Plot the closing prices
+plt.figure(figsize=(12, 6))
+plt.plot(tsla_data['Close'], label='TSLA Closing Price', color='blue')
+plt.title('Tesla Stock Price')
+plt.xlabel('Date')
+plt.ylabel('Closing Price (USD)')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+
+
